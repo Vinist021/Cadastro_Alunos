@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.abutua.students_backend.models.Course;
-import com.abutua.students_backend.models.Student;
 
 import jakarta.annotation.PostConstruct;
 
@@ -20,10 +19,10 @@ public class CoursesController {
 
     private List<Course> courses = new ArrayList<>();
     
-    // @GetMapping("courses")
-    // public List<Course> getCourses() {
-    //     return courses;
-    // }
+    @GetMapping("courses")
+    public List<Course> getCourses() {
+        return courses;
+    }
 
     // @PostConstruct
     // public void init() {
@@ -41,13 +40,13 @@ public class CoursesController {
     //     courses.add(c2);
     // }
 
-    // @GetMapping("courses/{id}")
-    // public ResponseEntity<Course> getCourse(@PathVariable int id) {
-    //      Course course = courses.stream()
-    //                             .filter(c -> c.getId() == id)
-    //                             .findFirst()
-    //                             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found"));
+    @GetMapping("courses/{id}")
+    public ResponseEntity<Course> getCourse(@PathVariable int id) {
+         Course course = courses.stream()
+                                .filter(c -> c.getId() == id)
+                                .findFirst()
+                                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Product not found"));
 
-    //     return ResponseEntity.ok(course);
-    // }
+        return ResponseEntity.ok(course);
+    }
 }
