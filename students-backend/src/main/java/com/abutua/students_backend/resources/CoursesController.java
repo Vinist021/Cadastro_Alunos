@@ -24,21 +24,25 @@ public class CoursesController {
         return courses;
     }
 
-    // @PostConstruct
-    // public void init() {
-    //     Course c1 = new Course();
+    @PostConstruct
+    public void init() {
+        Course c1 = new Course();
+        Course c2 = new Course();
+        Course c3 = new Course();
 
-    //     c1.setId(1);
-    //     c1.setName("curso1");
+        c1.setId(1);
+        c1.setName("curso1");
 
-    //     Course c2 = new Course();
+        c2.setId(2);
+        c2.setName("curso2");
 
-    //     c2.setId(2);
-    //     c2.setName("curso2");
+        c3.setId(3);
+        c3.setName("curso3");
 
-    //     courses.add(c1);
-    //     courses.add(c2);
-    // }
+        courses.add(c1);
+        courses.add(c2);
+        courses.add(c3);
+    }
 
     @GetMapping("courses/{id}")
     public ResponseEntity<Course> getCourse(@PathVariable int id) {
