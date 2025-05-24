@@ -43,13 +43,13 @@ public class CoursesController {
         Course c3 = new Course();
 
         c1.setId(1);
-        c1.setName("curso1");
+        c1.setName("Angular");
 
         c2.setId(2);
-        c2.setName("curso2");
+        c2.setName("SQL");
 
         c3.setId(3);
-        c3.setName("curso3");
+        c3.setName("Java");
 
         courses.add(c1);
         courses.add(c2);
