@@ -7,7 +7,7 @@ public class Student {
     private String email;
     private String phone;
     private int idCurso;
-    private int period;
+    private int idPeriod;
 
     public int getId() {
         return id;
@@ -39,21 +39,21 @@ public class Student {
     public void setIdCurso(int idCurso) {
         this.idCurso = idCurso;
     }
-    public int getPeriod() {
-        return period;
+    public int getIdPeriod() {
+        return idPeriod;
     }
-    public void setPeriod(int period) {
-        this.period = period;
+    public void setIdPeriod(int idPeriod) {
+        this.idPeriod = idPeriod;
     }
 
     //Métodos Construtores
-    public Student(int id, String name, String email, String phone, int idCurso, int period) {
+    public Student(int id, String name, String email, String phone, int idCurso, int idPeriod) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.idCurso = idCurso;
-        this.period = period;
+        this.idPeriod = idPeriod;
     }
 
     public Student() {

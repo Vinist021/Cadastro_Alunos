@@ -2,42 +2,44 @@
 $('#inputTelefone').mask('(00) 00000-0000');
 
 //Alunos já cadastrados
-var alunos = [
-    {
-        id: 1,
-        nome: 'Pedro Antônio',
-        email: 'pedro.antonio@abutua.com',
-        telefone: '(15) 9999-9999',
-        idCurso: 1,
-        turno: 3
-    },
-    {
-        id: 2,
-        nome: 'Maria Francisca',
-        email: 'mariafr@gmail.com',
-        telefone: '(15) 1234-5678',
-        idCurso: 2,
-        turno: 2
-    }
+var students = [
+    // {
+    //     id: 1,
+    //     nome: 'Pedro Antônio',
+    //     email: 'pedro.antonio@abutua.com',
+    //     phone: '(15) 9999-9999',
+    //     idCurso: 1,
+    //     period: 3
+    // },
+    // {
+    //     id: 2,
+    //     nome: 'Maria Francisca',
+    //     email: 'mariafr@gmail.com',
+    //     phone: '(15) 1234-5678',
+    //     idCurso: 2,
+    //     period: 2
+    // }
 ];
 
-var cursos = [
-    {id: 1, nome: 'Java'},
-    {id: 2, nome: 'Angular'},
-    {id: 3, nome: 'SQL'}
+var courses = [
+    // {id: 1, nome: 'Java'},
+    // {id: 2, nome: 'Angular'},
+    // {id: 3, nome: 'SQL'}
 ];
 
-var turnos = [
-    {id: 1, nome: 'Manhã'},
-    {id: 2, nome: 'Tarde'},
-    {id: 3, nome: 'Noite'}
+var periods = [
+    // {id: 1, nome: 'Manhã'},
+    // {id: 2, nome: 'Tarde'},
+    // {id: 3, nome: 'Noite'}
 ];
 
-//Carregar todos os alunos
+//Carregar todos os students
 function loadAlunos() {
-    for(let aluno of alunos) {
-        addNewRow(aluno);
-    }
+    $.getJSON('http://localhost:8080/students', (response) => {
+        let students = response;
+        for(let stud of students)
+            addNewRow(stud);
+    })
 }
 
 loadAlunos();
@@ -45,23 +47,23 @@ loadAlunos();
 function save() {
     const addAluno = 
     {
-        id: alunos.length + 1,
-        nome: document.getElementById('inputNome').value,
+        id: students.length + 1,
+        name: document.getElementById('inputNome').value,
         email: document.getElementById('inputEmail').value,
-        telefone: document.getElementById('inputTelefone').value,
+        phone: document.getElementById('inputTelefone').value,
         idCurso: document.getElementById('selectCurso').value,
-        turno: pegarTurno()
+        period: pegarTurno()
     }
 
     addNewRow(addAluno);
-    alunos.push(addAluno);
+    students.push(addAluno);
 
     document.getElementById('formAlunos').reset();
 }
 
 function pegarTurno() {
-    const turno = document.querySelector('input[name="gridRadios"]:checked').value;
-    return turno;
+    const period = document.querySelector('input[name="gridRadios"]:checked').value;
+    return period;
   }
 
 function addNewRow(aluno) {
@@ -73,8 +75,8 @@ function addNewRow(aluno) {
     var idNode = document.createTextNode(aluno.id);
     newRow.insertCell().appendChild(idNode);
 
-    //inserir nome aluno
-    var nameNode = document.createTextNode(aluno.nome);
+    //inserir name aluno
+    var nameNode = document.createTextNode(aluno.name);
     newRow.insertCell().appendChild(nameNode);
 
     //inserir email aluno
@@ -83,21 +85,23 @@ function addNewRow(aluno) {
     cellEmail.className ='d-none d-md-table-cell';
     cellEmail.appendChild(emailNode);
 
-    //inserir telefone aluno
-    var phoneNode = document.createTextNode(aluno.telefone);
+    //inserir phone aluno
+    var phoneNode = document.createTextNode(aluno.phone);
     var cellPhone = newRow.insertCell();
     cellPhone.className ='d-none d-sm-table-cell text-nowrap';
     cellPhone.appendChild(phoneNode);
 
     //inserir curso aluno
-    var courseNode = document.createTextNode(cursos[aluno.idCurso - 1].nome);
+    //var courseNode = document.createTextNode(courses[aluno.idCurso - 1].name);
+    var courseNode = document.createTextNode(aluno.idCurso);
     var cellCourse = newRow.insertCell();
     cellCourse.className = 'd-none d-sm-table-cell'
     cellCourse.appendChild(courseNode);
 
-    //inserir turno aluno
-    var shiftNode = document.createTextNode(turnos[aluno.turno - 1].nome);
+    //inserir period aluno
+    //var periodNode = document.createTextNode(periods[aluno.period - 1].name);
+    var periodNode = document.createTextNode(aluno.period);
     var cellShift = newRow.insertCell();
     cellShift.className = 'd-none d-sm-table-cell'
-    cellShift.appendChild(shiftNode);
+    cellShift.appendChild(periodNode);
 }
