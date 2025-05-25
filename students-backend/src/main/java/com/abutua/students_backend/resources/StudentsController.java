@@ -46,21 +46,21 @@ public class StudentsController {
 
         s1.setEmail("aaa@gmail.com");
         s1.setId(1);
-        s1.setIdCurso(1);
+        s1.setIdCourse(1);
         s1.setName("adalberto");
         s1.setIdPeriod(1);
         s1.setPhone("(15) 99184-3750");
 
         s2.setEmail("beltrano@gmail.com");
         s2.setId(2);
-        s2.setIdCurso(2);
+        s2.setIdCourse(2);
         s2.setName("beltrano");
         s2.setIdPeriod(2);
         s2.setPhone("(11) 33481-1130");
 
         s3.setEmail("ccc@gmail.com");
         s3.setId(3);
-        s3.setIdCurso(3);
+        s3.setIdCourse(3);
         s3.setName("cicrano@gmail.com");
         s3.setIdPeriod(3);
         s3.setPhone("(17) 88431-8060");

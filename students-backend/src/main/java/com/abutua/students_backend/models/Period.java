@@ -18,7 +18,7 @@ public class Period {
         this.name = name;
     }
 
-    //Métodos Construtores
+    //Constructor Methods
     public Period(int id, String name) {
         this.id = id;
         this.name = name;

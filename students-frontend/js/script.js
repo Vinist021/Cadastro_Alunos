@@ -1,5 +1,5 @@
 //Masks
-$('#inputTelefone').mask('(00) 00000-0000');
+$('#inputPhone').mask('(00) 00000-0000');
 
 //Elements already registered
 let students = [];
@@ -23,7 +23,7 @@ function loadCourses() {
 
 function addCourses(courses) {
     for(let course of courses)
-       document.getElementById('selectCurso').innerHTML += `<option value="${course.id}">${course.name}</option>`;
+       document.getElementById('selectCourse').innerHTML += `<option value="${course.id}">${course.name}</option>`;
 }
 
 function loadPeriods() {
@@ -65,17 +65,17 @@ function save() {
     const addStudent = 
     {
         id: students.length + 1,
-        name: document.getElementById('inputNome').value,
+        name: document.getElementById('inputName').value,
         email: document.getElementById('inputEmail').value,
-        phone: document.getElementById('inputTelefone').value,
-        idCurso: document.getElementById('selectCurso').value,
+        phone: document.getElementById('inputPhone').value,
+        idCourse: document.getElementById('selectCourse').value,
         period: catchTurn()
     }
 
     addNewRow(addStudent);
     students.push(addStudent);
 
-    document.getElementById('formAlunos').reset();
+    document.getElementById('studentForm').reset();
 }
 
 function catchTurn() {
@@ -109,7 +109,7 @@ function addNewRow(student) {
     cellPhone.appendChild(phoneNode);
 
     //insert student course
-    let courseNode = document.createTextNode(courses[student.idCurso - 1].name);
+    let courseNode = document.createTextNode(courses[student.idCourse - 1].name);
     let cellCourse = newRow.insertCell();
     cellCourse.className = 'd-none d-sm-table-cell'
     cellCourse.appendChild(courseNode);

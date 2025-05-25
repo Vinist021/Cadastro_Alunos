@@ -6,7 +6,7 @@ public class Student {
     private String name;
     private String email;
     private String phone;
-    private int idCurso;
+    private int idCourse;
     private int idPeriod;
 
     public int getId() {
@@ -33,11 +33,11 @@ public class Student {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    public int getIdCurso() {
-        return idCurso;
+    public int getIdCourse() {
+        return idCourse;
     }
-    public void setIdCurso(int idCurso) {
-        this.idCurso = idCurso;
+    public void setIdCourse(int idCourse) {
+        this.idCourse = idCourse;
     }
     public int getIdPeriod() {
         return idPeriod;
@@ -46,13 +46,13 @@ public class Student {
         this.idPeriod = idPeriod;
     }
 
-    //Métodos Construtores
-    public Student(int id, String name, String email, String phone, int idCurso, int idPeriod) {
+    //Constructor Methods
+    public Student(int id, String name, String email, String phone, int idCourse, int idPeriod) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.idCurso = idCurso;
+        this.idCourse = idCourse;
         this.idPeriod = idPeriod;
     }
 

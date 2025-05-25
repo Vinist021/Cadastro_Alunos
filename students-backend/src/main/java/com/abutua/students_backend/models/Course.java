@@ -18,7 +18,7 @@ public class Course {
         this.name = name;
     }
 
-    //Métodos Construtores
+    //Constructor Methods
     public Course(int id, String name) {
         this.id = id;
         this.name = name;
