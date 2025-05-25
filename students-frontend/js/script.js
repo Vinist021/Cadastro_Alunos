@@ -39,13 +39,23 @@ function loadPeriods() {
 }
 
 function addPeriods() {
-    for(let period of periods)
+    let primeira = true;
+    
+    for(let period of periods){
+        let tag = '';
+
+        if(primeira){
+            tag = 'checked';
+            primeira = false;
+        }
+
         document.getElementById('radioOptions').innerHTML += `
-     <div class="form-check">
-        <input class="form-check-input" type="radio" name="gridRadios" id="${period.id}" value="${period.id}" checked>
-        <label class="form-check-label" for="gridRadios1">${period.name}</label>
-    </div>
-    `
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="gridRadios" id="${period.id}" value="${period.id}" ${tag}>
+            <label class="form-check-label" for="gridRadios1">${period.name}</label>
+        </div>
+        `
+    }
 }
 
 function loadStudents() {
