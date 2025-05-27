@@ -79,18 +79,25 @@ function save() {
         email: document.getElementById('inputEmail').value,
         phone: document.getElementById('inputPhone').value,
         idCourse: document.getElementById('selectCourse').value,
-        period: catchTurn()
+        idPeriod: catchTurn()
     }
 
-    addNewRow(addStudent);
-    students.push(addStudent);
-
-    document.getElementById('studentForm').reset();
+    $.ajax({
+        url: 'http://localhost:8080/students',
+        type: 'POST',
+        data: JSON.stringify(addStudent),
+        contentType: 'application/json',
+        success: (addStudent) => {
+            addNewRow(addStudent);
+            students.push(addStudent);
+            document.getElementById('studentForm').reset();
+        }
+    })
 }
 
 function catchTurn() {
-    const period = document.querySelector('input[name="gridRadios"]:checked').value;
-    return period;
+    const idPeriod = document.querySelector('input[name="gridRadios"]:checked').value;
+    return idPeriod;
   }
 
 function addNewRow(student) {

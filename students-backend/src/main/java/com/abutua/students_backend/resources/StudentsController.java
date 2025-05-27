@@ -38,6 +38,21 @@ public class StudentsController {
         return ResponseEntity.created(location).body(student);
     }
 
+    @GetMapping("students/{id}")
+    public ResponseEntity<Student> getStudent(@PathVariable int id) {
+        Student stud = students.stream()
+                                .filter(s -> s.getId() == id)
+                                .findFirst()
+                                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found"));
+
+        return ResponseEntity.ok(stud);
+    }
+
+    @GetMapping("students")
+    public List<Student> getStudents() {
+        return students;
+    }
+
     @PostConstruct
     public void init() {
         Student s1 = new Student();
@@ -68,21 +83,6 @@ public class StudentsController {
         students.add(s1);
         students.add(s2);
         students.add(s3);
-    }
-
-    @GetMapping("students/{id}")
-    public ResponseEntity<Student> getStudent(@PathVariable int id) {
-        Student stud = students.stream()
-                                .filter(s -> s.getId() == id)
-                                .findFirst()
-                                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Student not found"));
-
-        return ResponseEntity.ok(stud);
-    }
-
-    @GetMapping("students")
-    public List<Student> getStudents() {
-        return students;
     }
     
 }
