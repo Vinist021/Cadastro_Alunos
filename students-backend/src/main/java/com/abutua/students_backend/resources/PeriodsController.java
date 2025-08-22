@@ -38,18 +38,9 @@ public class PeriodsController {
 
     @PostConstruct
     public void init() {
-        Period p1 = new Period();
-        Period p2 = new Period();
-        Period p3 = new Period();
-
-        p1.setId(1);
-        p1.setName("Manhã");
-
-        p2.setId(2);
-        p2.setName("Tarde");
-
-        p3.setId(3);
-        p3.setName("Noite");
+        Period p1 = new Period(1, "Manhã");
+        Period p2 = new Period(2, "Tarde");
+        Period p3 = new Period(3, "Noite");
 
         periods.add(p1);
         periods.add(p2);
